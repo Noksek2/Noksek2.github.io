@@ -20,3 +20,25 @@ tags: [jekyll, github-pages]
 뭐  임마
 ```python
 print("Hello, Jekyll!")
+```
+```cpp
+#include <iostream>
+struct B;
+struct A{
+  std::shared_ptr<B> b;
+  ~A(){std::cout<<"A released\n";}
+}
+struct B{
+  std::shared_ptr<A> a;
+  ~B(){std::cout<<"B released\n";}
+}
+int main(){
+  std::shared_ptr<A> a=make_shared<A>();
+  std::shared_ptr<B> b=make_shared<B>();
+  a->b=b;
+  b->a=a;
+  
+  std::cout<<"fcc\n";
+  return 0;
+}
+```
