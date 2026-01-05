@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브 코딩 : 쓰레기 개발 시대의 서막 - 위키</title>
+    <style>
+        /* 보일러플레이트 CSS - 그냥 있어 보이게 만듦 */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --border-color: #a2a9b1;
+            --link-color: #0645ad;
+            --heading-border: #eaecf0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        /* 헤더 영역 */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .wiki-title {
+            font-size: 2.5em;
+            font-weight: normal;
+            margin: 0;
+            padding-top: 10px;
+            border-bottom: 1px solid var(--heading-border);
+        }
+
+        .tagline {
+            font-size: 0.9em;
+            color: #54595d;
+        }
+
+        /* 메인 콘텐츠 레이아웃 */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .article-body {
+            flex: 3;
+        }
+
+        /* 정보 상자 (Infobox) - 나무위키 느낌 */
+        .infobox {
+            flex: 1;
+            border: 1px solid var(--border-color);
+            background-color: #f9f9f9;
+            padding: 10px;
+            font-size: 0.9em;
+            height: fit-content;
+        }
+
+        .infobox-title {
+            background-color: #ccccff;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            margin: -10px -10px 10px -10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .infobox th, .infobox td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .infobox th {
+            background-color: #f2f2f2;
+            width: 40%;
+        }
+
+        /* 본문 스타일 */
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid var(--heading-border);
+            padding-bottom: 5px;
+            margin-top: 1.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .highlight {
+            background-color: #fff0c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        #generated-time {
+            font-size: 0.8em;
+            color: #888;
+            text-align: right;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+	<header style="position: relative; height: 250px; overflow: hidden; background: #222; color: #fff;">
+        <canvas id="particleCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;">
+            <p class="tagline" style="color: #aaa;">마우스를 움직여 '붕괴'를 확인하세요</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <article class="article-body">
+            <p>
+                <b>바이브 코딩(Vibe Coding)</b>이란, 코드의 작동 원리나 내부 로직에 대한 이해 없이, 인공지능(AI)이 생성해준 결과물만을 맹신하며 복사 붙여넣기(Ctrl+C, Ctrl+V) 하는 행위를 일컫는 신조어이다. 
+            </p>
+            <p>
+                이러한 행태는 2020년대 중반 거대 언어 모델(LLM)의 발전과 함께 폭발적으로 증가했으며, 개발 생태계의 심각한 질적 저하를 초래하고 있다는 비판을 받고 있다.
+            </p>
+<div style="width: 100%; height: 300px; background: #111; margin: 20px 0; border: 2px dashed red; position: relative;">
+        <canvas id="chaosCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
+        <div style="position: absolute; bottom: 5px; right: 5px; color: red; font-size: 0.8em; font-family: monospace;">
+            Warning: CPU Burning...
+        </div>
+    </div>
+            <h2>개요</h2>
+            <p>
+                과거의 개발자가 스택오버플로우를 검색하며 최소한의 조립 과정을 거쳤다면, 바이브 코더들은 프롬프트 엔지니어링이라는 미명 하에 사고(Thinking) 자체를 외주화한다. 그들은 결과물이 '돌아간다'는 사실 자체에만 집중하며, 그 코드가 왜 돌아가는지, 어떤 부작용(Side Effect)을 초래할지는 고려하지 않는다.
+            </p>
+
+            <h2>역설과 붕괴</h2>
+            <p>
+                이 문서의 작성자는 이러한 세태에 극도의 혐오감을 느끼면서도, 역설적으로 이 문서를 작성하기 위해 <span class="highlight">Gemini라는 AI 도구를 사용했다.</span>
+            </p>
+            <p>
+                작성자는 "나는 이 모순에 의해 스스로 붕괴한다"고 밝혔으며, 이는 기술에 대한 애증과 현실적인 타협 사이에서의 고뇌를 보여주는 단적인 예시이다. 이 페이지 자체가 바이브 코딩이 얼마나 쉽고, 동시에 얼마나 영혼이 없는지를 증명하는 살아있는 증거이다.
+            </p>
+            
+        </article>
+
+        <aside class="infobox">
+            <div class="infobox-title">프로젝트 정보</div>
+            <table>
+                <tr>
+                    <th>주제</th>
+                    <td>바이브 코딩의 역설</td>
+                }
+                <tr>
+                    <th>개발 방식</th>
+                    <td>100% AI 생성 (Gemini)</td>
+                </tr>
+                <tr>
+                    <th>사용 기술</th>
+                    <td>HTML, CSS, Vanilla JS</td>
+                </tr>
+                <tr>
+                    <th>이해도</th>
+                    <td>0% (추정)</td>
+                </tr>
+                <tr>
+                    <th>상태</th>
+                    <td><span style="color:red;">모순에 의한 붕괴 중</span></td>
+                </tr>
+            </table>
+        </aside>
+    </div>
+
+    <footer id="generated-time">
+        </footer>
+
+</div>
+
+<script>
+    /**
+     * 바이브 코딩용 물리 효과 엔진
+     * - 이해하려고 하지 마세요. 그냥 돌아갑니다.
+     */
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+
+    // 캔버스 크기 설정
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+
+    // 마우스 좌표 (충돌용)
+    const mouse = { x: null, y: null, radius: 100 };
+
+    window.addEventListener('mousemove', function(event) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = event.x - rect.left;
+        mouse.y = event.y - rect.top;
+    });
+
+    // 텍스트 그리기 (이 텍스트를 입자로 변환함)
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 80px Verdana';
+    ctx.fillText('Vibe Coder sucks', 20, 130); 
+    
+    // 픽셀 데이터 추출
+    const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = 3;
+            this.baseX = this.x;
+            this.baseY = this.y;
+            this.density = (Math.random() * 30) + 1;
+        }
+        draw() {
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+        update() {
+            // 물리 충돌 계산 (거리 및 벡터)
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            let directionX = forceDirectionX * force * this.density;
+            let directionY = forceDirectionY * force * this.density;
+
+            if (distance < mouse.radius) {
+                // 마우스가 가까이 오면 도망감 (붕괴 효과)
+                this.x -= directionX * 5; 
+                this.y -= directionY * 5;
+            } else {
+                // 멀어지면 원래 자리로 복귀 (탄성)
+                if (this.x !== this.baseX) {
+                    let dx = this.x - this.baseX;
+                    this.x -= dx / 10;
+                }
+                if (this.y !== this.baseY) {
+                    let dy = this.y - this.baseY;
+                    this.y -= dy / 10;
+                }
+            }
+        }
+    }
+
+    function init() {
+        particlesArray = [];
+        // 픽셀 스캔해서 입자 생성 (무식한 방법이지만 요즘 컴은 빨라서 돌아감)
+        for (let y = 0, y2 = textCoordinates.height; y < y2; y++) {
+            for (let x = 0, x2 = textCoordinates.width; x < x2; x++) {
+                // 알파 값이 128 이상인 픽셀만 입자로 변환 (글자 부분)
+                if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
+                    let positionX = x;
+                    let positionY = y;
+                    // 성능 위해 입자 좀 듬성듬성 생성
+                    if (x % 4 === 0 && y % 4 === 0) { 
+                        particlesArray.push(new Particle(positionX * 1.5 + 50, positionY * 1.5 - 50)); 
+                    }
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].draw();
+            particlesArray[i].update();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    // 창 크기 조절 시 리셋
+    window.addEventListener('resize', () => {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+        init();
+    });
+	
+	// --- 여기서부터 무의미한 회전 로직 시작 ---
+    const chaosCanvas = document.getElementById('chaosCanvas');
+    const cCtx = chaosCanvas.getContext('2d');
+    
+    // 캔버스 해상도 맞추기 (이건 좀 코딩 같지만 무시하세요)
+    chaosCanvas.width = chaosCanvas.parentElement.offsetWidth;
+    chaosCanvas.height = chaosCanvas.parentElement.offsetHeight;
+
+    const phrases = ["NULL", "UNDEFINED", "NaN", "SEGFAULT", "VIBE", "PANIC"];
+    const spinners = [];
+
+    class Spinner {
+        constructor() {
+            this.x = Math.random() * chaosCanvas.width;
+            this.y = Math.random() * chaosCanvas.height;
+            this.text = phrases[Math.floor(Math.random() * phrases.length)];
+            this.fontSize = Math.random() * 40 + 20;
+            this.angle = 0;
+            // 회전 속도: 미친듯이 빠르게 (-0.5 ~ 0.5 라디안/프레임)
+            this.speed = (Math.random() - 0.5) * 0.8; 
+            this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+
+        update() {
+            this.angle += this.speed;
+            // 화면 밖으로 나가면 반대쪽으로 튀어나오게 (텔레포트)
+            this.x += (Math.random() - 0.5) * 5;
+            this.y += (Math.random() - 0.5) * 5;
+        }
+
+        draw() {
+            cCtx.save(); // 현재 상태 저장 (이게 뭔지 몰라도 됨)
+            cCtx.translate(this.x, this.y); // 좌표축을 텍스트 위치로 이동
+            cCtx.rotate(this.angle); // 좌표축 자체를 회전 (어지러움 유발)
+            
+            cCtx.fillStyle = this.color;
+            cCtx.font = `bold ${this.fontSize}px Arial`;
+            cCtx.textAlign = 'center';
+            cCtx.textBaseline = 'middle';
+            cCtx.fillText(this.text, 0, 0);
+            
+            cCtx.restore(); // 상태 복구 (안 하면 화면 전체가 돕니다 ㅋㅋㅋ)
+        }
+    }
+
+    // 쓰레기 객체 50개 생성
+    for (let i = 0; i < 50; i++) {
+        spinners.push(new Spinner());
+    }
+// FPS 계산을 위한 변수 (전역 변수처럼 위에 선언됐다고 가정하거나, 그냥 여기 둬도 JS는 돌아갑니다)
+    let lastTime = performance.now();
+    let frameCount = 0;
+    let fps = 60;
+    let simulatedCpu = 0;
+
+    function animateChaos() {
+        // 1. 배경을 반투명하게 덮어서 잔상 효과 유지
+        cCtx.fillStyle = 'rgba(0, 0, 0, 0.1)'; 
+        cCtx.fillRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+
+        // 2. 기존 쓰레기 객체들 회전시키기
+        spinners.forEach(spinner => {
+            spinner.update();
+            spinner.draw();
+        });
+
+        // --- [NEW] 시스템 모니터링 바이브 추가 ---
+        const now = performance.now();
+        const delta = now - lastTime;
+        
+        // 프레임 계산 (CPU 부하 추정을 위함)
+        if (delta >= 500) { // 0.5초마다 갱신
+            fps = frameCount * 2;
+            frameCount = 0;
+            lastTime = now;
+            
+            // *중요* 바이브 코딩식 CPU 계산법:
+            // FPS가 60이면 CPU 10%, FPS가 떨어지면 CPU가 100%에 가깝다고 '구라'를 침.
+            // 거기에 랜덤 노이즈를 섞어서 있어 보이게 만듦.
+            simulatedCpu = Math.min(100, Math.max(5, (60 - fps) * 2 + Math.random() * 15)).toFixed(1);
+        }
+        frameCount++;
+
+        // 메모리 가져오기 (크롬 계열만 가능. 아니면 0뜸)
+        // window.performance.memory는 표준이 아니지만, 우린 신경 안 씀.
+        const memoryRaw = window.performance && window.performance.memory ? window.performance.memory.usedJSHeapSize : 0;
+        const memoryMB = (memoryRaw / 1048576).toFixed(1); // Byte -> MB 변환
+
+        // HUD 그리기 (해커 영화 느낌나는 초록색 폰트)
+        cCtx.save();
+        cCtx.font = "bold 16px monospace";
+        cCtx.fillStyle = "#ff0"; // Matrix Green
+        cCtx.shadowColor = "#0f0";
+        cCtx.shadowBlur = 5;
+        cCtx.textAlign = "left";
+
+        // 왼쪽 상단에 출력
+        cCtx.fillText(`[SYSTEM MONITORING]`, 10, 30);
+        cCtx.fillText(`JS HEAP : ${memoryMB} MB`, 10, 50); // 실제 힙 메모리
+        cCtx.fillText(`V-CPU   : ${simulatedCpu} %`, 10, 70);  // 가짜 CPU 점유율
+        cCtx.fillText(`FPS     : ${fps}`, 10, 90);
+        
+        // 경고 메시지 (메모리 많이 먹으면 빨간색으로 바뀜)
+        if (memoryMB > 50) {
+            cCtx.fillStyle = "red";
+            cCtx.shadowColor = "red";
+            cCtx.fillText(`WARNING: MEMORY LEAK DETECTED`, 10, 120);
+        }
+        
+        cCtx.restore();
+        // ----------------------------------------
+
+        requestAnimationFrame(animateChaos);
+    }
+
+    animateChaos(); // 발사!
+    
+    // 창 크기 조절 대응 따위 귀찮지만 넣어줌
+    window.addEventListener('resize', () => {
+        chaosCanvas.width = chaosCanvas.parentElement.offsetWidth;
+        chaosCanvas.height = chaosCanvas.parentElement.offsetHeight;
+    });
+</script>
+
+</body>
+</html>
