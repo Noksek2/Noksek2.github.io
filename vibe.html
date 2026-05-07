@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>바이브 코딩 : 쓰레기 개발 시대의 서막 - 위키</title>
+    <title>바이브 코딩 : 서글픈 개발 시대의 서막</title>
     <style>
         /* 보일러플레이트 CSS - 그냥 있어 보이게 만듦 */
         :root {
@@ -133,7 +133,7 @@
 	<header style="position: relative; height: 250px; overflow: hidden; background: #222; color: #fff;">
         <canvas id="particleCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;">
-            <p class="tagline" style="color: #aaa;">마우스를 움직여 '붕괴'를 확인하세요</p>
+            <p class="tagline" style="color: #aaa;">마우스를 움직여 장난질을 해보세요</p>
         </div>
     </header>
 
@@ -153,16 +153,29 @@
     </div>
             <h2>개요</h2>
             <p>
-                과거의 개발자가 스택오버플로우를 검색하며 최소한의 조립 과정을 거쳤다면, 바이브 코더들은 프롬프트 엔지니어링이라는 미명 하에 사고(Thinking) 자체를 외주화한다. 그들은 결과물이 '돌아간다'는 사실 자체에만 집중하며, 그 코드가 왜 돌아가는지, 어떤 부작용(Side Effect)을 초래할지는 고려하지 않는다.
+                과거의 개발자가 스택오버플로우를 검색하며 최소한의 조립 과정을 거쳤다면, 
+				현대는 바이브 코딩이라는 정체불명의 무언가를 권장하며 프롬프트 엔지니어링이라는 미명 하에 사고(Thinking) 자체를 외주화한다. 
+				결과물이 당장에 튀어나오며 겉보기에 화려하고 '돌아간다'는 사실 자체에 집중하는 바람에, 그 코드가 왜 돌아가는지, 어떤 부작용(Side Effect)을 초래할지 고려하지 않게 될 것이라는 분석이 있다.
             </p>
 
-            <h2>역설과 붕괴</h2>
+            <h2>역설</h2>
             <p>
-                이 문서의 작성자는 이러한 세태에 극도의 혐오감을 느끼면서도, 역설적으로 이 문서를 작성하기 위해 <span class="highlight">Gemini라는 AI 도구를 사용했다.</span>
+                css html 페이지의 작성은 95% <span class="highlight">Gemini라는 AI 도구를 사용했다.</span>
+				AI (LLM 챗봇)라는 도구를 사용하는 즉시 바이브 코딩으로 취급하는 주옥같은 현실을 반영한다고 볼 수 있다.
+				AI를 사용하는 것이 곧 A.I 만능론을 반증한다는 논증으로 쓰이는 것은 안타깝다고 볼 수 있다.
             </p>
             <p>
-                작성자는 "나는 이 모순에 의해 스스로 붕괴한다"고 밝혔으며, 이는 기술에 대한 애증과 현실적인 타협 사이에서의 고뇌를 보여주는 단적인 예시이다. 이 페이지 자체가 바이브 코딩이 얼마나 쉽고, 동시에 얼마나 영혼이 없는지를 증명하는 살아있는 증거이다.
+                단순한 생산성이라는 지표만으로 모든 걸 판단하는 풍조에 대해서는 비관적이나, 슬프게도 현대의 담론은 그런 복잡한 현상에 대해서는 전혀 고려하지 않는다.
+				이 점은 역설적으로 A.I.와 같은 도구 발전으로 인한 지능퇴행의 한 현상으로 볼 수도 있을 것이고, 반대로 그들의 헛소리를 치우기 위해 앞으로의 세대가 짊어질 무게를 생각하면
+				웃어넘길 수 있는 태도는 아니지만, 어차피 AGI 숭배 혹은 공포를 확산하는 것이 현대 세대의 가장 이상적인 꿈일것이므로 도태된 개발자로써의 합리화 및 인지부조화를 반영한 글은 여기서 마친다.
             </p>
+			<p>
+                작성자는 "나는 이 모순에 의해 스스로 붕괴한다"고 밝히며, 이는 기술에 대한 애증과 현실적인 타협 사이에서의 고뇌를 보여주는 단적인 예시이다. 
+				결론적으로 페이지 자체가 바이브 코딩이 얼마나 쉽고, 동시에 얼마나 영혼이 없는지를 증명하는 증거라고 볼 수도 있다.
+            </p>
+			<p>
+				다 떠나서 나는 내 머리로 내 손으로 직접 waifu를 만드는 것을 지나친 비효율이라고 생각하는 현대 풍조에 대해서 도저히 용서할 수 없다.
+			</p>
             
         </article>
 
@@ -347,7 +360,7 @@
             cCtx.rotate(this.angle); // 좌표축 자체를 회전 (어지러움 유발)
             
             cCtx.fillStyle = this.color;
-            cCtx.font = `bold ${this.fontSize}px Arial`;
+            cCtx.font = `bold ${this.fontSize}px Comic Sans`;
             cCtx.textAlign = 'center';
             cCtx.textBaseline = 'middle';
             cCtx.fillText(this.text, 0, 0);
