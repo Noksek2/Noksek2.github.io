@@ -401,7 +401,7 @@
 
         // HUD 그리기 (해커 영화 느낌나는 초록색 폰트)
         cCtx.save();
-        cCtx.font = "bold 16px monospace";
+        cCtx.font = "bold 16px Comic Sans";
         cCtx.fillStyle = "#ff0"; // Matrix Green
         cCtx.shadowColor = "#0f0";
         cCtx.shadowBlur = 5;
@@ -417,7 +417,7 @@
         if (memoryMB > 50) {
             cCtx.fillStyle = "red";
             cCtx.shadowColor = "red";
-            cCtx.fillText(`WARNING: MEMORY LEAK DETECTED`, 10, 120);
+            cCtx.fillText(`MeMory > 50MB`, 10, 120);
         }
         
         cCtx.restore();
